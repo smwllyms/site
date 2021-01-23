@@ -17,8 +17,11 @@ function updateTrackName() {
 
 SC.get('/playlists/1198427683').then(function(playlist) {
     sc_playlist = playlist;
-    startTrack();
-    updateTrackName();
+    startTrack().then(() => {
+        updateTrackName();
+        play_btn.click();
+        setTimeout(() => play_btn.click(), 500);
+    });
 });
 
 play_btn.addEventListener("click", function() {
@@ -39,22 +42,29 @@ prev_btn.addEventListener("click", function() {
     if (play_mode == 0) play_btn.click();
     if (current_track_num == 0) current_track_num = 1;
     current_track_num--;
-    startTrack();
-    updateTrackName();
-    play_btn.click();
-    setTimeout(() => play_btn.click(), 500);
+    startTrack().then(() => {
+        updateTrackName();
+        play_btn.click();
+        play_btn.click();
+        //setTimeout(() => play_btn.click(), 500);
+    });
 });
 
 next_btn.addEventListener("click", function() {
     if (play_mode == 0) play_btn.click();
     if (current_track_num == sc_playlist.track_count - 1) current_track_num = -1;
     current_track_num++;
-    startTrack();
-    updateTrackName();
-    play_btn.click();
-    setTimeout(() => play_btn.click(), 500);
+    startTrack().then(() => {
+        updateTrackName();
+        play_btn.click();
+        play_btn.click();
+        //setTimeout(() => play_btn.click(), 500);
+    });
 });
 
 function startTrack() {
-    SC.stream("tracks/"+sc_playlist.tracks[current_track_num].id).then(function(sound) {current_track = sound; current_track.on("finish", () => next_btn.click())});
+    return new Promise((resolve) => {
+        console.log("sddssd");
+        SC.stream("tracks/"+sc_playlist.tracks[current_track_num].id).then(function(sound) {current_track = sound; current_track.on("finish", () => next_btn.click()); resolve();});
+    });
 }
