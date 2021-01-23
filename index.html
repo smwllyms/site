@@ -37,7 +37,18 @@
                         <h2>This site is currently in Development</h2>
                     </div></li>
                     <li style="background-color: black !important;"><div></div></li>
-                    <li><iframe id="sc_iframe" class="my_iframe" style="height:70% !important; width: 50% !important;" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/1198427683&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=false&visual=true"></iframe></li>
+                    <li style="background:linear-gradient(to bottom,red, orange);"><div>
+                        <div style="width:50%;padding:25px;line-height: 25px;">
+                            <h2 style="color: whitesmoke;">Career in music</h2>
+                            <p>
+                                Sam Williams (sqfx) has been producing music on his computer since the seventh grade, but his music career began very young. 
+                                He picked up guitar lessons at the age of nine, started on the saxaphone at age 11 and began the french horn at age 15. 
+                                Sam has also played the bass for a jazz combo for a couple years. Sam loves all types of music, but electronic dance has always
+                                been his favorite. From house to future bass, Sam has produced it all. He works primarily on SoundCloud, a free music hosting
+                                service. Feel free to visit his page <a>by clicking here,</a> and listen to some of his best hits with the interactive below.
+                            </p>
+                        </div>
+                    </div></li>
                     <li><iframe class="my_iframe" src="https://shwilliams72.wixsite.com/index/shop"></iframe></li>
                     <li><div></div></li>
                 </ul>
@@ -49,9 +60,11 @@
                 <a class="sc_img" id="sc_prev"></a>
                 <a class="sc_img" id="sc_play"></a>
                 <a class="sc_img" id="sc_next"></a>
+                <p style="float: left;color:whitesmoke;font-size: 13px;margin-left: 25px;"><strong>NOW PLAYING: SQFX - </strong> <a id="track_name"></a></p>
             </div>
         </div>
     </body>
     <script src="scripts/navscroll.js"></script>
+    <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
     <script src="scripts/handle_sc.js"></script>
 </html>
