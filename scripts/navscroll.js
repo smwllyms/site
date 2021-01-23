@@ -14,6 +14,7 @@ let sc_player = null;
 
 mobile_menu.addEventListener("click", () => {nav.style.top = "0"; });
 exit_menu.addEventListener("click", () => {nav.style.top = "-100vh"; });
+document.getElementById("cntct").addEventListener("click", () => nav_bars[4].click());
 
 Array.from(nav_bars).forEach(function (element, i) {
     element.onclick = () => { 

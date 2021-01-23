@@ -33,24 +33,46 @@
         <div id="main">
             <div id="slides">
                 <ul>
-                    <li><div>
-                        <h2>This site is currently in Development</h2>
+                    <li style="background: linear-gradient(to right, rgba(50,29,106, 1), rgba(151,150,155, 0.8)), url('img/bg-header.jpg') no-repeat left center;"><div>
+                        <h2 style="color: whitesmoke;">Welcome</h2>
+                        <p class="std_inv" style="max-width: 50%; float: left;">
+                            I am Sam Williams, a web designer and programmer who loves learning new ways to bring imagination to life with code.
+                        </p>
+                        <p class="std_inv" style="max-width: 50%; float: right;">
+                            Take a tour of this website to get to know a bit about me and what I do. Navigate with the menu located in the top 
+                            right of the screen.
+                        </p>
+                        <p class="std_inv" style="max-width: 50%; float: left; clear: both;">
+                            Always feel free to contact me by <a id="cntct" class="my_btn">clicking here!</a>
+                        </p>
                     </div></li>
                     <li style="background-color: black !important;"><div></div></li>
                     <li style="background:linear-gradient(to bottom,red, orange);"><div>
                         <div style="width:50%;padding:25px;line-height: 25px;">
                             <h2 style="color: whitesmoke;">Career in music</h2>
-                            <p>
+                            <p class="std">
                                 Sam Williams (sqfx) has been producing music on his computer since the seventh grade, but his music career began very young. 
                                 He picked up guitar lessons at the age of nine, started on the saxaphone at age 11 and began the french horn at age 15. 
                                 Sam has also played the bass for a jazz combo for a couple years. Sam loves all types of music, but electronic dance has always
-                                been his favorite. From house to future bass, Sam has produced it all. He works primarily on SoundCloud, a free music hosting
-                                service. Feel free to visit his page <a>by clicking here,</a> and listen to some of his best hits with the interactive below.
+                                been his favorite. From classic beats to house, from chillout to dubstep, even from future bass to to rock, Sam has produced it all. 
+                                He works primarily on SoundCloud, an excellent free music platform. Feel free to visit his page <a>by clicking here,</a> and 
+                                listen to some of his best hits with the interactive on this page.
                             </p>
                         </div>
                     </div></li>
                     <li><iframe class="my_iframe" src="https://shwilliams72.wixsite.com/index/shop"></iframe></li>
-                    <li><div></div></li>
+                    <li style="background: linear-gradient(purple,blue);"><div>
+                        <div class="std" style="width:30%;margin:auto;">
+                            <center><h2 style="color: whitesmoke;">Contact me</h2>
+                            <form>
+                                <input class="my_input" type="text" placeholder="Name"/>
+                                <input class="my_input" type="text" placeholder="Subject"/>
+                                <input class="my_input" type="text" placeholder="Email (Optional)"/>
+                                <textarea class="my_input" placeholder="Message..." style="font-family: Arial;"></textarea>
+                                <a class="my_btn" id="send_email" style="width: 50%;">Submit</a>
+                            </form></center>
+                        </div>
+                    </div></li>
                 </ul>
             </div>
         </div>
@@ -67,4 +89,9 @@
     <script src="scripts/navscroll.js"></script>
     <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
     <script src="scripts/handle_sc.js"></script>
+    <script src="scripts/handle_gmail.js"></script>
+    <script async defer src="https://apis.google.com/js/api.js"
+        onload="this.onload=function(){};handleClientLoad()"
+        onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    </script>
 </html>
