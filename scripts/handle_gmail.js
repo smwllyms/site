@@ -1,77 +1,63 @@
-//var CLIENT_ID = '202384831917-46ubk2pkgbm0sd5esigknjvh5jkcupip.apps.googleusercontent.com';
-var CLIENT_ID = '743220959926-rbfvkng9igfoh9328kbbr3456hd81kld.apps.googleusercontent.com';
-var API_KEY = 'AIzaSyBBfXJ9r3I4iwLkU5hwYAH6Xr44whnYh64';
+    var form_id_js = "javascript_form";
 
-var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest"];
+    var data_js = {
+        "access_token": "6a9pw0rw2l1xga3zm9hqjsln" // sent after you sign up
+    };
 
-// Authorization scopes required by the API; multiple scopes can be
-// included, separated by spaces.
-var SCOPES = 'https://www.googleapis.com/auth/gmail.readonly';
-
-var authorizeButton = document.getElementById('authorize_button');
-var signoutButton = document.getElementById('signout_button');
-
-/**
- *  On load, called to load the auth2 library and API client library.
- */
-function handleClientLoad() {
-    gapi.load('client:auth2', initClient);
-}
-
-/**
- *  Initializes the API client library and sets up sign-in state
- *  listeners.
- */
-function initClient() {
-    gapi.client.init({
-        apiKey: API_KEY,
-        clientId: CLIENT_ID,
-        discoveryDocs: DISCOVERY_DOCS,
-        scope: SCOPES
-    }).then(function () {
-        // Listen for sign-in state changes.
-        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-
-        // Handle the initial sign-in state.
-        gapi.auth2.getAuthInstance().signIn();
-        updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-    }, function(error) {
-        console.log(JSON.stringify(error, null, 2));
-    });
-}
-
-/**
- *  Called when the signed in status changes, to update the UI
- *  appropriately. After a sign-in, the API is called.
- */
-function updateSigninStatus(isSignedIn) {
-    if (isSignedIn) {
-        console.log("signed in");
-    } else {
-        console.log("signed out");
+    function js_onSuccess() {
+        // remove this to avoid redirect
+        //window.location = window.location.pathname + "?message=Email+Successfully+Sent%21&isError=0";
+        window.alert("Your email was sent! Thank you.");
+        window.location = window.location.pathname;
     }
-}
 
-const message =
-"From: my.email@gmail.com\r\n" + 
-"To: my.email@gmail.com\r\n" +
-"Subject: As basic as it gets\r\n\r\n" +
-"This is the plain text body of the message.  Note the blank line between the header information and the body of the message.";
+    function js_onError(error) {
+        // remove this to avoid redirect
+        //window.location = window.location.pathname + "?message=Email+could+not+be+sent.&isError=1";
+    }
 
+    var sendButton = document.getElementById("send_email");
 
-// The body needs to be base64url encoded.
-const encodedMessage = btoa(message)
+    function js_send() {
+        sendButton.innerText='Sending…';
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function() {
+            if (request.readyState == 4 && request.status == 200) {
+                js_onSuccess();
+            } else
+            if(request.readyState == 4) {
+                js_onError(request.response);
+            }
+        };
 
-const reallyEncodedMessage = encodedMessage.replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '')
+        var name = document.querySelector("#" + form_id_js + " [name='name']").value;
+        var email = document.querySelector("#" + form_id_js + " [name='email']").value;
+        var subject = document.querySelector("#" + form_id_js + " [name='subject']").value;
+        var message = document.querySelector("#" + form_id_js + " [name='text']").value;
+        data_js['subject'] = "CONTACT FORM - " + subject;
+        data_js['text'] = name + " (email: " + email + ") says:\r\n\r\n" + message + "\r\n\r\n" + "From smwllyms.ml contact form.";
+        var params = toParams(data_js);
 
-document.getElementById("send_email").addEventListener("click", function() {
-    gapi.client.gmail.users.messages.send({
-        userId: 'me',
-        resource: { // Modified
-            // same response with any of these
-            raw: reallyEncodedMessage
-            // raw: encodedMessage
-            // raw: message
+        request.open("POST", "https://postmail.invotes.com/send", true);
+        request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+        request.send(params);
+
+        return false;
+    }
+
+    sendButton.onclick = js_send;
+
+    function toParams(data_js) {
+        var form_data = [];
+        for ( var key in data_js ) {
+            form_data.push(encodeURIComponent(key) + "=" + encodeURIComponent(data_js[key]));
         }
-    }).then(function () { console.log("done!")});
-});
+
+        return form_data.join("&");
+    }
+
+    var js_form = document.getElementById(form_id_js);
+    js_form.addEventListener("submit", function (e) {
+        e.preventDefault();
+    });

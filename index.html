@@ -64,11 +64,11 @@
                     <li style="background: linear-gradient(purple,blue);"><div>
                         <div class="std" style="width:30%;margin:auto;">
                             <center><h2 style="color: whitesmoke;">Contact me</h2>
-                            <form>
-                                <input class="my_input" type="text" placeholder="Name"/>
-                                <input class="my_input" type="text" placeholder="Subject"/>
-                                <input class="my_input" type="text" placeholder="Email (Optional)"/>
-                                <textarea class="my_input" placeholder="Message..." style="font-family: Arial;"></textarea>
+                            <form id="javascript_form">
+                                <input class="my_input" name="name" type="text" placeholder="Name"/>
+                                <input class="my_input" name="subject" type="text" placeholder="Subject"/>
+                                <input class="my_input" name="email" type="text" placeholder="Email (Optional)"/>
+                                <textarea class="my_input" name="text" placeholder="Message..." style="font-family: Arial;"></textarea>
                                 <a class="my_btn" id="send_email" style="width: 50%;">Submit</a>
                             </form></center>
                         </div>
@@ -90,8 +90,4 @@
     <script src="https://connect.soundcloud.com/sdk/sdk-3.3.2.js"></script>
     <script src="scripts/handle_sc.js"></script>
     <script src="scripts/handle_gmail.js"></script>
-    <script async defer src="https://apis.google.com/js/api.js"
-        onload="this.onload=function(){};handleClientLoad()"
-        onreadystatechange="if (this.readyState === 'complete') this.onload()">
-    </script>
 </html>
