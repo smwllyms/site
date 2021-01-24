@@ -3,7 +3,7 @@ let ghub = document.getElementById("ghub");
 async function callMe() {
     let { Octokit } = await import("https://cdn.skypack.dev/@octokit/core");
     console.log("fdfs");
-    const octokit = new Octokit({ auth: `90351327fdc32a41dc3618409f010eb3bc19d5ec` });
+    const octokit = new Octokit({ auth: `a22e4f1fa507f899bd00e769742bdf6d21ea51` + `79` });
 
     console.log('calling');
     const repos = await octokit.request("GET /users/{org}/repos", {
