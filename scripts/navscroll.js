@@ -39,6 +39,7 @@ function createScrollNavBar() {
         (width / 2) + " 0 l-" + width + " " + tri_height + "l-" + width + " -" + 
         tri_height + " l-" + tricorner + " 0 z");
     scrollnav_bar.setAttribute("fill", color);
+    scrollnav_bar.setAttribute("fill", color);
 }
 
 function scrollBar() {
