@@ -1,12 +1,9 @@
 #header {
     position: relative;
-    height:120px;
+    height:15vh;
     width:100%;
     overflow: visible;
-    border-bottom: 3px solid black;
     color:white;
-    position: fixed;
-    top:0;
     z-index: 2;
 }
 #header:before {
@@ -26,21 +23,17 @@
 .title {
     margin:0;
     padding:0;
-    font:bold 90px Arial;
     float: left;
     margin-left: 20px;
-    margin-top: 30px;
 }
 #logo {
     background-image: url('../img/logo-3-gold.svg');
     filter: drop-shadow(1px 0px 4px  #555);
-    height: 200px;
+    height: 100%;
     width: 100px;
     background-size: 95%;
     background-repeat: no-repeat;
     float: left;
-    margin-left: 20px;
-    margin-top: 30px;
     overflow: visible;
     z-index: 1;
 }
@@ -48,8 +41,11 @@
     position: absolute;
 }
 
-@media (min-width: 1048px) {
+@media (min-width: 1175px) {
 
+    .title {
+        font:bold 12vh Arial;
+    }
     #header {
         text-shadow: #555 1px 0 4px;
     }
@@ -95,10 +91,10 @@
         transition:300ms ease-in-out;
     }
 }
-@media (max-width: 1048px) {
 
+@media (max-width: 1175px) {
     .title {
-        text-shadow: #555 1px 0 4px;
+        font:bold 12vh Arial;
     }
     #mobile_menu {
         position: absolute;
@@ -162,4 +158,13 @@
     }
     
 
+}
+@media (max-width: 650px) {
+    #header {
+        height:20vw;
+    }
+    .title {
+        text-shadow: #555 1px 0 4px;
+        font:bold 12vw Arial;
+    }
 }

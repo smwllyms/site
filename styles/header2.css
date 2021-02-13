@@ -1,0 +1,36 @@
+@media (min-width: 900px) {
+    #header {
+        height:15vh;
+        width:100vw;
+        color: rgb(133,0,72);  
+        background-image: url('../img/my cool bg.jpg');
+        background-size: 100%;
+        background-position: -150px 0px;
+    }
+    #headcontain {
+        width: 50%;
+        background-image: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(255,255,255,.8) 50%, rgba(255,255,255,0) 100%);
+    }
+    .title {
+        height: 100%;
+        display: inline-block;
+        font-size: 10vh;
+        margin-left: 20px;
+        text-shadow: 1px -1px 5px #eee;
+        vertical-align:text-bottom;
+        
+    }
+    #logo {
+        background-image: url('../img/logo-3-gold.svg');
+        height: 100%;
+        width: 200px;
+        background-size: 12vh;
+        margin-left: 15px;
+        background-repeat: no-repeat;
+        display: inline-block;
+        filter:drop-shadow(2px -2px 5px #333);
+    }
+}
+@media (max-width: 900px) {
+    
+}
